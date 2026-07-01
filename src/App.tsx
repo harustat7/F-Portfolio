@@ -30,7 +30,6 @@ import {
   GitBranch,
   Github,
   Eye,
-  FileText,
   Download,
   Search,
   PenTool,
@@ -43,6 +42,104 @@ import {
   Linkedin,
   Send
 } from 'lucide-react';
+
+type PortfolioProject = {
+  id: number;
+  title: string;
+  category: 'Landing Pages' | 'Redesigns' | 'Business Websites' | 'Portfolio Websites';
+  description: string;
+  tags: string[];
+  image: string;
+  featured: boolean;
+  liveLink?: string;
+  githubLink?: string;
+  designLink?: string;
+  galleryImages?: string[];
+};
+
+const projects: PortfolioProject[] = [
+  {
+    id: 1,
+    title: 'Webease',
+    category: 'Business Websites',
+    description: 'No-code website builder that enables users to create professional websites using customizable templates, domain availability checking, responsive layouts, and an intuitive content management interface.',
+    tags: ['CMS', 'No-Code', 'Responsive'],
+    image: 'https://images.pexels.com/photos/6476260/pexels-photo-6476260.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    featured: true,
+    liveLink: 'https://webease-cms-production-d10b.up.railway.app/',
+    githubLink: 'https://github.com/harustat7/Webease-CMS'
+  },
+  {
+    id: 2,
+    title: 'Professional Portfolio',
+    category: 'Portfolio Websites',
+    description: 'Professional portfolio showcasing custom web design and development projects, UI/UX redesigns, and full-stack solutions built for clients with a focus on performance, usability, and responsive design.',
+    tags: ['Portfolio', 'UI/UX', 'Responsive'],
+    image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    featured: false,
+    liveLink: 'https://portfolio-3804.onrender.com/',
+    githubLink: 'https://github.com/harustat7/portfolio'
+  },
+  {
+    id: 8,
+    title: 'Freelancing Portfolio',
+    category: 'Portfolio Websites',
+    description: 'Portfolio showcasing freelance web development and UI/UX projects, delivering responsive, scalable, and user-centric digital solutions for clients.',
+    tags: ['Freelance', 'Web Development', 'UI/UX'],
+    image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    featured: false,
+    liveLink: 'https://f-portfolio-nu.vercel.app/',
+    githubLink: 'https://github.com/harustat7/F-Portfolio'
+  },
+  {
+    id: 3,
+    title: 'Folio - GoodReads Redesign Website',
+    category: 'Redesigns',
+    description: 'Modern redesign of GoodReads with streamlined navigation, improved book discovery, engaging review interactions, and a responsive interface for book lovers.',
+    tags: ['React', 'Tailwind', 'Responsive'],
+    image: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    featured: false,
+    liveLink: 'https://folio-jade-sigma.vercel.app/',
+    githubLink: 'https://github.com/harustat7/Folio'
+  },
+  {
+    id: 4,
+    title: 'Scatch',
+    category: 'Business Websites',
+    description: 'Full-stack e-commerce platform featuring secure user authentication, product management, shopping cart functionality, and role-based access for customers and store owners.',
+    tags: ['Full-Stack', 'E-Commerce', 'Auth'],
+    image: 'https://images.pexels.com/photos/6956903/pexels-photo-6956903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    featured: false,
+    liveLink: 'https://scatch-production-d50b.up.railway.app/',
+    githubLink: 'https://github.com/harustat7/Scatch'
+  },
+  {
+    id: 5,
+    title: 'IronVolt Fitness Landing Page',
+    category: 'Landing Pages',
+    description: 'High-energy fitness landing page concept with a bold hero section, program cards, pricing plans, testimonials, and a conversion-focused call to action for gym memberships.',
+    tags: ['Landing Page', 'Fitness', 'Responsive'],
+    image: '/projects/ironvolt/ironvolt-full.png',
+    featured: false,
+    designLink: '/projects/ironvolt/ironvolt-full.png',
+    galleryImages: [
+      '/projects/ironvolt/ironvolt-hero.png',
+      '/projects/ironvolt/ironvolt-programs.png',
+      '/projects/ironvolt/ironvolt-pricing.png'
+    ]
+  },
+  {
+    id: 7,
+    title: 'MeetMind',
+    category: 'Business Websites',
+    description: 'AI-powered meeting assistant that automatically records, transcribes, summarizes discussions, extracts action items, and helps teams stay organized with searchable meeting insights.',
+    tags: ['AI', 'Meetings', 'Productivity'],
+    image: 'https://images.pexels.com/photos/3153203/pexels-photo-3153203.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    featured: false,
+    liveLink: 'https://meet-mind-ai-one.vercel.app/',
+    githubLink: 'https://github.com/harustat7/MeetMindAI'
+  }
+];
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -248,23 +345,25 @@ function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
-              <motion.button
+              <motion.a
+                href="#projects"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="group px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold rounded-xl transition-all duration-200 shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/40 flex items-center gap-2"
               >
                 View Projects
                 <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </motion.button>
+              </motion.a>
 
-              <motion.button
+              <motion.a
+                href="#contact"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="px-6 py-3.5 bg-slate-800/50 hover:bg-slate-800 text-white font-semibold rounded-xl transition-all duration-200 border border-slate-700 hover:border-slate-600 flex items-center gap-2"
               >
                 Hire Me
                 <ArrowRight className="w-4 h-4" />
-              </motion.button>
+              </motion.a>
             </div>
 
             {/* Trust Indicators */}
@@ -973,8 +1072,8 @@ function CaseStudySection() {
             {/* Image */}
             <div className="relative aspect-[4/3] lg:aspect-auto overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt="Restaurant Website Redesign"
+                src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt="Folio GoodReads Redesign Website"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/40 to-transparent lg:block hidden" />
@@ -991,7 +1090,7 @@ function CaseStudySection() {
 
               {/* Title */}
               <h3 className="text-2xl font-bold text-white mb-6">
-                Restaurant Website Redesign
+                Folio - GoodReads Redesign Website
               </h3>
 
               {/* Problem */}
@@ -1001,7 +1100,7 @@ function CaseStudySection() {
                   <span className="text-sm font-semibold text-slate-300">Problem</span>
                 </div>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  The original site had outdated design, poor mobile responsiveness, and confusing navigation that affected user experience.
+                  GoodReads can feel cluttered for readers trying to discover books, compare reviews, and move quickly between lists and recommendations.
                 </p>
               </div>
 
@@ -1012,7 +1111,7 @@ function CaseStudySection() {
                   <span className="text-sm font-semibold text-slate-300">Approach</span>
                 </div>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Redesigned the layout with mobile-first approach, improved visual hierarchy, and created cleaner sections for menu and contact.
+                  Reworked the interface around streamlined navigation, cleaner discovery paths, engaging review interactions, and responsive layouts.
                 </p>
               </div>
 
@@ -1023,7 +1122,7 @@ function CaseStudySection() {
                   <span className="text-sm font-semibold text-slate-300">Result</span>
                 </div>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Modern responsive website with improved navigation, better loading speed, and a visual design that matches the restaurant's brand.
+                  A modern book discovery experience that feels easier to scan, more inviting to browse, and smoother for book lovers on any device.
                 </p>
               </div>
 
@@ -1222,75 +1321,6 @@ function ProjectsSection() {
 
   const filters = ['All', 'Landing Pages', 'Redesigns', 'Business Websites', 'Portfolio Websites'];
 
-  const projects = [
-    {
-      id: 1,
-      title: 'Analytics Dashboard',
-      category: 'Business Websites',
-      description: 'SaaS landing page with modern UI, conversion-optimized sections, and smooth scroll animations. Built for a data analytics startup.',
-      tags: ['React', 'Tailwind', 'Framer Motion'],
-      image: 'https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      featured: true,
-      liveLink: '#',
-      githubLink: '#'
-    },
-    {
-      id: 2,
-      title: 'Creative Portfolio',
-      category: 'Portfolio Websites',
-      description: 'Personal portfolio with clean layout, project showcase, and responsive design. Minimal aesthetic with focus on visuals.',
-      tags: ['React', 'CSS', 'Responsive'],
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      featured: false,
-      liveLink: '#',
-      githubLink: '#'
-    },
-    {
-      id: 3,
-      title: 'Restaurant Redesign',
-      category: 'Redesigns',
-      description: 'Complete website redesign for a local restaurant. Modern navigation, improved menu display, and mobile-friendly layout.',
-      tags: ['React', 'Tailwind', 'Mobile-First'],
-      image: 'https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      featured: false,
-      liveLink: '#',
-      githubLink: '#'
-    },
-    {
-      id: 4,
-      title: 'Digital Marketing Agency',
-      category: 'Business Websites',
-      description: 'Professional agency website with services showcase, team section, and contact integration. Clean corporate aesthetic.',
-      tags: ['React', 'TypeScript', 'Tailwind'],
-      image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      featured: false,
-      liveLink: '#',
-      githubLink: '#'
-    },
-    {
-      id: 5,
-      title: 'Fitness Platform',
-      category: 'Landing Pages',
-      description: 'Fitness and gym landing page with class schedules, pricing tables, and membership signup. Bold design with strong CTAs.',
-      tags: ['React', 'Tailwind', 'Animation'],
-      image: 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      featured: false,
-      liveLink: '#',
-      githubLink: '#'
-    },
-    {
-      id: 6,
-      title: 'Tech Startup',
-      category: 'Landing Pages',
-      description: 'Product landing page for a tech startup. Features include hero section, feature highlights, pricing, and early access signup.',
-      tags: ['React', 'Framer Motion', 'Tailwind'],
-      image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      featured: false,
-      liveLink: '#',
-      githubLink: '#'
-    }
-  ];
-
   const filteredProjects = activeFilter === 'All'
     ? projects
     : projects.filter(project => project.category === activeFilter);
@@ -1379,8 +1409,13 @@ function ProjectsSection() {
   );
 }
 
-function ProjectCard({ project, featured = false }: { project: any; featured?: boolean }) {
+function ProjectCard({ project, featured = false }: { project: PortfolioProject; featured?: boolean }) {
   const [isHovered, setIsHovered] = useState(false);
+  const hasLiveLink = Boolean(project.liveLink);
+  const hasGithubLink = Boolean(project.githubLink);
+  const previewLink = project.liveLink ?? project.designLink;
+  const hasPreviewLink = Boolean(previewLink);
+  const previewLabel = hasLiveLink ? 'Live Preview' : 'View Design';
 
   return (
     <motion.div
@@ -1417,24 +1452,32 @@ function ProjectCard({ project, featured = false }: { project: any; featured?: b
           transition={{ duration: 0.3 }}
           className="absolute inset-0 hidden lg:flex items-center justify-center gap-3 z-20"
         >
-          <motion.a
-            href={project.liveLink}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-6 py-3 bg-emerald-500 text-slate-950 font-semibold rounded-xl shadow-xl"
-          >
-            <Eye className="w-4 h-4" />
-            Live Preview
-          </motion.a>
-          <motion.a
-            href={project.githubLink}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-6 py-3 bg-slate-800 text-white font-semibold rounded-xl border border-slate-700"
-          >
-            <Github className="w-4 h-4" />
-            GitHub
-          </motion.a>
+          {hasPreviewLink && (
+            <motion.a
+              href={previewLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 px-6 py-3 bg-emerald-500 text-slate-950 font-semibold rounded-xl shadow-xl"
+            >
+              <Eye className="w-4 h-4" />
+              {previewLabel}
+            </motion.a>
+          )}
+          {hasGithubLink && (
+            <motion.a
+              href={project.githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 px-6 py-3 bg-slate-800 text-white font-semibold rounded-xl border border-slate-700"
+            >
+              <Github className="w-4 h-4" />
+              GitHub
+            </motion.a>
+          )}
         </motion.div>
       </div>
 
@@ -1457,7 +1500,7 @@ function ProjectCard({ project, featured = false }: { project: any; featured?: b
 
         {/* Tech Tags */}
         <div className="flex flex-wrap gap-2 mb-5">
-          {project.tags.map((tag: string) => (
+          {project.tags.map((tag) => (
             <span
               key={tag}
               className="px-2.5 py-1 text-xs font-medium text-slate-400 bg-slate-800/50 rounded-md border border-slate-700/30"
@@ -1467,22 +1510,53 @@ function ProjectCard({ project, featured = false }: { project: any; featured?: b
           ))}
         </div>
 
+        {project.galleryImages && (
+          <div className="grid grid-cols-3 gap-2 mb-5">
+            {project.galleryImages.map((image, index) => (
+              <a
+                key={image}
+                href={image}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block aspect-[16/9] overflow-hidden rounded-lg border border-slate-700/50 bg-slate-800/40 transition-all hover:border-emerald-500/40"
+                aria-label={`${project.title} screenshot ${index + 1}`}
+              >
+                <img
+                  src={image}
+                  alt={`${project.title} screenshot ${index + 1}`}
+                  className="h-full w-full object-cover"
+                />
+              </a>
+            ))}
+          </div>
+        )}
+
         {/* Actions - Mobile */}
-        <div className="flex gap-3 lg:hidden">
-          <a
-            href={project.liveLink}
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-emerald-500 text-slate-950 font-medium rounded-lg text-sm"
-          >
-            <Eye className="w-4 h-4" />
-            Preview
-          </a>
-          <a
-            href={project.githubLink}
-            className="flex items-center gap-2 px-4 py-2.5 bg-slate-800 text-white font-medium rounded-lg border border-slate-700 text-sm"
-          >
-            <Github className="w-4 h-4" />
-          </a>
-        </div>
+        {(hasPreviewLink || hasGithubLink) && (
+          <div className="flex gap-3 lg:hidden">
+            {hasPreviewLink && (
+              <a
+                href={previewLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-emerald-500 text-slate-950 font-medium rounded-lg text-sm"
+              >
+                <Eye className="w-4 h-4" />
+                {hasLiveLink ? 'Preview' : 'Design'}
+              </a>
+            )}
+            {hasGithubLink && (
+              <a
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 bg-slate-800 text-white font-medium rounded-lg border border-slate-700 text-sm"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Hover glow effect */}

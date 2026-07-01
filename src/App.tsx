@@ -119,7 +119,7 @@ const projects: PortfolioProject[] = [
     category: 'Landing Pages',
     description: 'High-energy fitness landing page concept with a bold hero section, program cards, pricing plans, testimonials, and a conversion-focused call to action for gym memberships.',
     tags: ['Landing Page', 'Fitness', 'Responsive'],
-    image: '/projects/ironvolt/ironvolt-full.png',
+    image: 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     featured: false,
     designLink: '/projects/ironvolt/ironvolt-full.png',
     galleryImages: [

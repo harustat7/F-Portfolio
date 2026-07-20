@@ -66,7 +66,7 @@ const projects: PortfolioProject[] = [
     tags: ['CMS', 'No-Code', 'Responsive'],
     image: 'https://images.pexels.com/photos/6476260/pexels-photo-6476260.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     featured: true,
-    liveLink: 'https://webease-cms-production-d10b.up.railway.app/',
+    liveLink: 'https://webease-cms.vercel.app/',
     githubLink: 'https://github.com/harustat7/Webease-CMS'
   },
   {
@@ -110,7 +110,7 @@ const projects: PortfolioProject[] = [
     tags: ['Full-Stack', 'E-Commerce', 'Auth'],
     image: 'https://images.pexels.com/photos/6956903/pexels-photo-6956903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     featured: false,
-    liveLink: 'https://scatch-production-d50b.up.railway.app/',
+    liveLink: 'https://scatch-smoky.vercel.app/',
     githubLink: 'https://github.com/harustat7/Scatch'
   },
   {
@@ -198,11 +198,10 @@ function Navbar({ scrolled, mobileMenuOpen, setMobileMenuOpen }: {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
           ? 'bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/50'
           : 'bg-transparent'
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -298,7 +297,7 @@ function MobileNavLink({ href, children }: { href: string; children: React.React
   return (
     <a
       href={href}
-      onClick={() => {}}
+      onClick={() => { }}
       className="block text-slate-300 hover:text-white py-2 text-sm font-medium"
     >
       {children}
@@ -1359,11 +1358,10 @@ function ProjectsSection() {
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
-                activeFilter === filter
+              className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${activeFilter === filter
                   ? 'bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20'
                   : 'bg-slate-800/50 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-700/50'
-              }`}
+                }`}
             >
               {filter}
             </button>
@@ -1421,9 +1419,8 @@ function ProjectCard({ project, featured = false }: { project: PortfolioProject;
     <motion.div
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      className={`group relative bg-slate-900/40 rounded-2xl border border-slate-800/60 hover:border-emerald-500/30 overflow-hidden transition-all duration-300 ${
-        featured ? 'lg:grid lg:grid-cols-2 lg:gap-0' : ''
-      }`}
+      className={`group relative bg-slate-900/40 rounded-2xl border border-slate-800/60 hover:border-emerald-500/30 overflow-hidden transition-all duration-300 ${featured ? 'lg:grid lg:grid-cols-2 lg:gap-0' : ''
+        }`}
     >
       {/* Image Section */}
       <div className={`relative overflow-hidden ${featured ? 'aspect-[16/9] lg:aspect-auto lg:h-full' : 'aspect-[4/3]'}`}>
